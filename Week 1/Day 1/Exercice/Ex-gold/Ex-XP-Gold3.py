@@ -1,6 +1,6 @@
 # Exercise: While Loop - Ask for Name
 
-my_name = "AnasBOUCHAQOUR" 
+my_name = "ZakariaALMA" 
 
 while True:
     name = input("What is your name? ")
