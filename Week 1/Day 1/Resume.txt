@@ -27,6 +27,9 @@ remove(nom_list)
 pop(nom_list) / like remove but can be restored
 sorted(nom_list)  / but list should have it all elements at the same type 
 
+In Python, the .remove() method works differently from .pop(). While .pop() removes an element by its position/index, .remove() removes an element by its value.
+
+
 5- Set (unic)
 my_set = set()   / set doen't how doubles only one  time. 
 
