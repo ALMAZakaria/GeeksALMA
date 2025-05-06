@@ -1,4 +1,4 @@
-my_fav_numbers = {0, 1, 8, 11, 121}
+my_fav_numbers = {0,1,8,11,121}
 print("My favorite numbers initially:", my_fav_numbers)
 
 # Add two new numbers
@@ -13,7 +13,7 @@ my_fav_numbers = set(fav_list)  # Convert back to set
 print("After removing the last number:", my_fav_numbers)
 
 # Create friend's favorites set
-friend_fav_numbers = {2, 4, 24, 35, 99}
+friend_fav_numbers = {2,4,24,35,99}
 print("Friend's favorite numbers:", friend_fav_numbers)
 
 # Concatenate the two sets
