@@ -30,4 +30,4 @@ print("Your paragraph contains {} non-whitespace characters.".format(NonWhite_sp
 #Average words per sentence
 
 average_words_per_sentence = len(words) / len(sentences)
-print("The average number of words per sentence is {:.2f}.".format(average_words_per_sentence))
+print("The average number of words per sentence is {:.1f}.".format(average_words_per_sentence))
