@@ -17,3 +17,6 @@ if name in birthdays:
 else:
     # Handle the case when the name is not found
     print(f"Sorry, we don't have the birthday information for {name}.")
+  
+# Call the functions
+# birthdays_advanced()
