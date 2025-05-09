@@ -1,19 +1,36 @@
-# Function to create a dictionary of letter indexes
-def create_letter_index_dict():
-  # Ask the user for a word
-  word = input("Enter a word: ").strip()
+class Farm:
+    def __init__(self, farm_name):
+        self.name = farm_name
+        self.animals = {}
 
-  #initialize an empty dictionary
-  letter_dict = {}
+    def add_animal(self, animal_type, count=1):
+        if animal_type in self.animals:
+            self.animals[animal_type] += count
+        else:
+            self.animals[animal_type] = count
 
-  # Loop through the word to populate the dictionary
-  for index, letter in enumerate(word):
-      if letter not in letter_dict:
-         letter_dict[letter] = []
-      letter_dict[letter].append(index)
+    def get_info(self):
+        info = f"{self.name}'s farm\n\n"
+        for animal, count in self.animals.items():
+            info += f"{animal} : {count}\n"
+        info += "\n    E-I-E-I-0!"
+        return info
 
-  # Print the resulting dictionary
-  print(f"The dictionary of letter indexes is: {letter_dict}")
+    def get_animal_types(self):
+        return sorted(self.animals.keys())
 
-# Call the function
-create_letter_index_dict()
+    def get_short_info(self):
+        animals = self.get_animal_types()
+        parts = []
+
+        for animal in animals:
+            count = self.animals[animal]
+            name = animal + "s" if count > 1 else animal
+            parts.append(name)
+
+        if len(parts) > 1:
+            animal_str = ", ".join(parts[:-1]) + " and " + parts[-1]
+        else:
+            animal_str = parts[0]
+
+        return f"{self.name}'s farm has {animal_str}."
