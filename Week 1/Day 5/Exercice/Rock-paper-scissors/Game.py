@@ -1,83 +1,60 @@
-import random
+def display_board(board):
+    print("\n")
+    print(" " + board[0] + " | " + board[1] + " | " + board[2])
+    print("---+---+---")
+    print(" " + board[3] + " | " + board[4] + " | " + board[5])
+    print("---+---+---")
+    print(" " + board[6] + " | " + board[7] + " | " + board[8])
+    print("\n")
 
-class Game:
-    def get_user_item(self):
-        valid_choices = ['rock', 'paper', 'scissors']
-        while True:
-            user_input = input("Choose rock, paper, or scissors: ").strip().lower()
-            if user_input in valid_choices:
-                return user_input
-            else:
-                print("Invalid choice. Please try again.")
-
-    def get_computer_item(self):
-        return random.choice(['rock', 'paper', 'scissors'])
-
-    def get_game_result(self, user_item, computer_item):
-        if user_item == computer_item:
-            return 'draw'
-        elif (
-            (user_item == 'rock' and computer_item == 'scissors') or
-            (user_item == 'scissors' and computer_item == 'paper') or
-            (user_item == 'paper' and computer_item == 'rock')
-        ):
-            return 'win'
-        else:
-            return 'loss'
-
-    def play(self):
-        user_item = self.get_user_item()
-        computer_item = self.get_computer_item()
-        result = self.get_game_result(user_item, computer_item)
-
-        print(f"\nYou selected {user_item}. The computer selected {computer_item}.")
-        if result == 'win':
-            print("You win!\n")
-        elif result == 'loss':
-            print("You lose.\n")
-        else:
-            print("It's a draw.\n")
-
-        return result
-
-def get_user_menu_choice():
-    print("Menu:")
-    print("1. Play a new game")
-    print("2. Show scores")
-    print("3. Quit")
-    choice = input("Enter your choice (1/2/3): ").strip()
-
-    if choice == '1':
-        return 'play'
-    elif choice == '2':
-        return 'score'
-    elif choice == '3':
-        return 'quit'
-    else:
-        print("Invalid input. Please select 1, 2 or 3.")
-        return None
-
-def print_results(results):
-    print("\nGame Summary:")
-    print(f"Wins: {results['win']}")
-    print(f"Losses: {results['loss']}")
-    print(f"Draws: {results['draw']}")
-    print("Thanks for playing!")
-
-def main():
-    results = {'win': 0, 'loss': 0, 'draw': 0}
-
+def player_input(board, player):
     while True:
-        user_choice = get_user_menu_choice()
-        if user_choice == 'play':
-            game = Game()
-            result = game.play()
-            results[result] += 1
-        elif user_choice == 'score':
-            print_results(results)
-        elif user_choice == 'quit':
-            print_results(results)
-            break
+        try:
+            position = int(input(f"Player {player} ({'X' if player == 1 else 'O'}), enter position (1-9): ")) - 1
+            if position < 0 or position > 8:
+                print("Invalid position. Choose a number from 1 to 9.")
+            elif board[position] != " ":
+                print("That spot is already taken. Try again.")
+            else:
+                return position
+        except ValueError:
+            print("Please enter a valid number.")
+
+def check_win(board, mark):
+    win_conditions = [
+        (0, 1, 2), (3, 4, 5), (6, 7, 8),  # rows
+        (0, 3, 6), (1, 4, 7), (2, 5, 8),  # columns
+        (0, 4, 8), (2, 4, 6)              # diagonals
+    ]
+    return any(board[i] == board[j] == board[k] == mark for i, j, k in win_conditions)
+
+def is_board_full(board):
+    return " " not in board
+
+def play():
+    board = [" "] * 9
+    current_player = 1
+    game_on = True
+
+    print("Welcome to Tic Tac Toe!")
+    display_board([str(i + 1) for i in range(9)])  # Show number positions
+
+    while game_on:
+        display_board(board)
+        mark = 'X' if current_player == 1 else 'O'
+        position = player_input(board, current_player)
+        board[position] = mark
+
+        if check_win(board, mark):
+            display_board(board)
+            print(f"🎉 Player {current_player} ({mark}) wins!")
+            game_on = False
+        elif is_board_full(board):
+            display_board(board)
+            print("It's a tie!")
+            game_on = False
+        else:
+            current_player = 2 if current_player == 1 else 1
 
 if __name__ == "__main__":
-    main()
+    play()
