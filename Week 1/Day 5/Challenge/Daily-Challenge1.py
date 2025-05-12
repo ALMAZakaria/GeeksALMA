@@ -3,7 +3,6 @@ import turtle
 
 class Circle:
     def __init__(self, radius=None, diameter=None):
-        # Allow user to define the circle by radius or diameter
         if radius is not None:
             self.radius = radius
         elif diameter is not None:
@@ -13,39 +12,30 @@ class Circle:
 
     @property
     def diameter(self):
-        # Return the diameter (always double the radius)
         return self.radius * 2
 
     @property
     def area(self):
-        # Compute the area of the circle
         return math.pi * (self.radius ** 2)
 
     def __str__(self):
-        # Return a nicely formatted string when printing the circle
         return f"Circle(radius={self.radius:.2f}, diameter={self.diameter:.2f}, area={self.area:.2f})"
 
     def __add__(self, other):
-        # Add two circles by adding their radii and returning a new Circle
         if isinstance(other, Circle):
             return Circle(radius=self.radius + other.radius)
         return NotImplemented
 
     def __lt__(self, other):
-        # Less than: compare based on radius
         if isinstance(other, Circle):
             return self.radius < other.radius
         return NotImplemented
 
     def __eq__(self, other):
-        # Equal: if both circles have the same radius
         if isinstance(other, Circle):
             return self.radius == other.radius
         return NotImplemented
 
-# -------------------------------
-# 🧪 Try the class with some examples
-# -------------------------------
 
 # Create some circles
 c1 = Circle(radius=12)
