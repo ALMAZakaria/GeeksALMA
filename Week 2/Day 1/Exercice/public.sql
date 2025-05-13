@@ -1,4 +1,4 @@
-CREATE DATABASE public
+CREATE DATABASE public;
 CREATE TABLE items(
 	item_id SERIAL PRIMARY KEY
 );
