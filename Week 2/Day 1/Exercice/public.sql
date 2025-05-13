@@ -44,6 +44,6 @@ SELECT * FROM customers WHERE last_name='Smith';
 /** 3-5-All customers whose last name is ‘Jones’.---**/
 SELECT * FROM customers WHERE last_name='Jones';
 
-/** 3-5-All customers whose firstname is not ‘Scott’.---**/
+/** 3-6-All customers whose firstname is not ‘Scott’.---**/
 SELECT * FROM customers WHERE first_name !='Scott';
 
