@@ -53,34 +53,34 @@ WHERE last_name='Benichou' AND first_name='Marc'
 
 
 -- 3-3 Fetch the students whose last_names are Benichou OR first_names are Marc.
-SELECT * FROM students
+SELECT first_name, last_name FROM students
 WHERE last_name = 'Benichou' OR first_name = 'Marc';
 
 
 -- 3-4 Fetch the students whose first_names contain the letter a.
-SELECT * FROM students
+SELECT first_name, last_name FROM students
 WHERE first_name ILIKE '%a%';
 
 
--- 3-6  Students whose first_name starts with the letter a:
-SELECT * FROM students
+-- 3-5  Students whose first_name starts with the letter a:
+SELECT first_name, last_name FROM students
 WHERE first_name ILIKE 'a%';
 
 
--- 3-7 Students whose first_name ends with the letter 'a':
-SELECT * FROM students
+-- 3-6 Students whose first_name ends with the letter 'a':
+SELECT first_name, last_name FROM students
 WHERE first_name ILIKE '%a';
 
--- 3-8  Students whose second-to-last letter of their first_name is 'a' (e.g. “Leah”):
-SELECT * FROM students
+-- 3-7  Students whose second-to-last letter of their first_name is 'a' (e.g. “Leah”):
+SELECT first_name, last_name FROM students
 WHERE first_name ~ '.a.$';
 
 
--- 3-9 Students whose id is equal to 1 AND 3 (This returns nothing):
-SELECT * FROM students
+-- 3-8 Students whose id is equal to 1 AND 3 (This returns nothing):
+SELECT first_name, last_name FROM students
 WHERE id = 1 AND id = 3;
 
--- 3-10 Students whose birth_date is on or after 01/01/2000:
-SELECT * FROM students
+-- 4- Students whose birth_date is on or after 01/01/2000:
+SELECT first_name, last_name FROM students
 WHERE birth_date >= '2000-01-01';
 
