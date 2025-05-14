@@ -15,7 +15,7 @@ def longest_word(sentence):
 
     return longest
 
-# 🧪 Example tests
+# Example tests
 print(longest_word("Morocco is a great contry."))         # ➞ "Margaret's"
 print(longest_word("A thing of beauty is a joy forever."))      # ➞ "forever."
 print(longest_word("Forgetfulness is by all means powerless!")) # ➞ "Forgetfulness"
