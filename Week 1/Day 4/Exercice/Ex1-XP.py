@@ -51,4 +51,4 @@ sara_pets.walk()
 
 # Bonus test: show sing and purr methods
 print(siamese_cat.purr())
-print(chartreux_cat.sing("Meowww!"))
+print(chartreux_cat.sing("Meoww!"))

@@ -38,17 +38,17 @@ class Family:
 
 
 # --- Testing the classes ---
-my_family = Family("Smith")
+my_family = Family("ALMA")
 
 # Adding members
-my_family.born("Alice", 17)
-my_family.born("Bob", 21)
-my_family.born("Charlie", 12)
+my_family.born("SAID", 17)
+my_family.born("FOUAD", 21)
+my_family.born("JAMAL", 12)
 
 # Checking majority status
-my_family.check_majority("Alice")
-my_family.check_majority("Bob")
-my_family.check_majority("Charlie")
+my_family.check_majority("SAID")
+my_family.check_majority("FOUAD")
+my_family.check_majority("JAMAL")
 my_family.check_majority("Unknown")  # testing non-existent member
 
 # Presenting family
