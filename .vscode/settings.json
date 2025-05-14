@@ -6,7 +6,7 @@
       "port": 5432,
       "driver": "PostgreSQL",
       "name": "localhost",
-      "database": "bootcamp",
+      "database": "dvdrental",
       "username": "postgres"
     }
   ]
