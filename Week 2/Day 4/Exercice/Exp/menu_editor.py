@@ -33,7 +33,6 @@ def show_user_menu():
             break
         else:
             print("Invalid choice. Please try again.")
-
 # -- add_item_to_menu() - this function should ask the user to input the item’s name and price.2- 
 def add_item_to_menu():
     name = input("Enter the name of the new item: ").strip()
