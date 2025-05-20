@@ -2,7 +2,8 @@ from sqlalchemy.orm import Session
 from models import User, Book, Review
 from schemas import UserCreate, BookCreate, ReviewCreate
 from auth import get_password_hash
-
+from sqlalchemy.orm import Session
+from models import Book
 def create_user(db: Session, user: UserCreate):
     """Create and store a new user"""
     hashed_password = get_password_hash(user.password)
@@ -27,3 +28,10 @@ def create_review(db: Session, review: ReviewCreate, user_id: int):
     db.commit()
     db.refresh(db_review)
     return db_review
+
+
+
+def get_books(db: Session):
+    """Retrieve all books from the database"""
+    return db.query(Book).all()
+

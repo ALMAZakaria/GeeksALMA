@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 
 # Define the database connection URL (Replace 'username' & 'password' with actual credentials)
-DATABASE_URL = "postgresql+asyncpg://postgres:123456789%40%40%40%40@localhost:5432/book_review_api"
+DATABASE_URL = "postgresql+asyncpg://postgres:123456789%40%40%40%40@localhost:5432/bookdb"
 
 # Create an asynchronous engine
 engine = create_async_engine(DATABASE_URL, echo=True)
