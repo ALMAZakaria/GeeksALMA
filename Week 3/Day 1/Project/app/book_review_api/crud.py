@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from models import User, Book, Review
 from schemas import UserCreate, BookCreate, ReviewCreate
+from auth import get_password_hash
 
 def create_user(db: Session, user: UserCreate):
     """Create and store a new user"""

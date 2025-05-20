@@ -16,8 +16,14 @@ def verify_password(plain_password, hashed_password):
     """Verify a password against its hash"""
     return pwd_context.verify(plain_password, hashed_password)
 
-def get_password_hash(password):
-    """Generate a hash for a given password"""
+
+
+def get_password_hash(password: str) -> str:
+    """Hashes a password using bcrypt"""
+    return pwd_context.hash(password)
+
+def get_password_hash(password: str) -> str:
+    """Hashes a password using bcrypt"""
     return pwd_context.hash(password)
 
 def create_access_token(data: dict, expires_delta: timedelta = None):
