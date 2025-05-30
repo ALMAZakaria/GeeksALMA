@@ -19,10 +19,10 @@ function renderRobots(list) {
   list.forEach(robot => {
     const card = document.createElement("div");
     card.className =
-      "bg-[url('card-pattern.png')] bg-cover bg-center bg-green-700 text-white rounded-xl p-4 shadow-lg transform hover:scale-105 transition duration-300";
-    card.innerHTML = `<div class="robot-card rounded-lg p-6 text-center shadow-lg">
-            <div class="robot-card-content p-6">
-              <div class="w-32 h-32 mx-auto mb-4 rounded-full   bg-gray-800 flex items-center justify-center overflow-hidden">
+      "bg-[url('card-pattern.png')] bg-cover bg-center bg-green-300 text-white rounded-xl p-2 shadow-lg transform hover:scale-105 transition duration-300";
+    card.innerHTML = `<div class="robot-card rounded-lg text-center ">
+            <div class="robot-card-content p-2">
+              <div class="w-38 h-38 mx-auto mb-4 rounded-full   bg-gray-800 flex items-center justify-center overflow-hidden">
                 <img 
                   src="https://robohash.org/${robot.id}?size=200x200" 
                   alt="${robot.name}"
