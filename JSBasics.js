@@ -114,4 +114,6 @@ setTimeout(() => console.log("Timeout"), 0);
 Promise.resolve().then(() => console.log("Promise"));
 console.log("End");
 
-
+const greet = (name) => {  "Hello, " + name + "!"; };
+console.log(greet('ehfehg'))
+console.log(null===undefined)
