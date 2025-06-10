@@ -1,0 +1,4 @@
+This is a sample text file.
+It contains multiple lines of content.
+We will read this file using Node.js file system module.
+This demonstrates file operations in Node.js. 
