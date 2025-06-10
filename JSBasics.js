@@ -64,7 +64,7 @@ function sayHello() { console.log("Hello!"); }
  so it is not initialized at the time of the call due to Temporal Dead Zone.
  Even with let or var, function expressions are not hoisted with their body.*/
 sayHi(); // ❌ ReferenceError
-const sayHi = function() { console.log("Hi!"); };
+const sayHi = function () { console.log("Hi!"); };
 
 // Arrow Function (no `this` binding)
 const obj = {
@@ -76,19 +76,19 @@ obj.greet(); // undefined
 
 /* Code with Explanations */
 // Regular function (dynamic `this`)
-function person(){
+function person() {
   this.age = 0;
-  seInterval(function growUp(){
+  seInterval(function growUp() {
     this.age++;// ❌ `this` refers to global object
-  },1000);
+  }, 1000);
 }
 
 
 function Person() {
   this.age = 0;
-  setInterval(() =>{
+  setInterval(() => {
     this.age++;
-  },1000);
+  }, 1000);
 }
 
 
@@ -97,23 +97,160 @@ function Person() {
 
 
 //🔍 Functions & Closures
-function createCount(){
-  let count =0;
-  return{
-    incrementCount: () => ++count,  
+function createCount() {
+  let count = 0;
+  return {
+    incrementCount: () => ++count,
     getCount: () => count,
   };
 }
 /*Code with Explanations*/
 const counter = createCount();//Lexical Scope: Functions access variables from their definition context.
 const increment = counter.incrementCount();///Encapsulation with Factory Functions: Functions returning objects for state retention.
-console.log(increment );
+console.log(increment);
 
 console.log("Start");
 setTimeout(() => console.log("Timeout"), 0);
 Promise.resolve().then(() => console.log("Promise"));
 console.log("End");
 
-const greet = (name) => {  "Hello, " + name + "!"; };
+const greet = (name) => { "Hello, " + name + "!"; };
 console.log(greet('ehfehg'))
-console.log(null===undefined)
+console.log(null === undefined)
+
+
+/*Async*/
+
+async function fetchUsers() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    const data = await response.json();
+    console.log(data);
+
+  } catch (error) {
+    console.error("Error fetching data", error);
+  }
+}
+
+fetchUsers();
+
+console.log("Start of script");
+
+setTimeout(function () {
+  console.log("First timeout completed");
+}, 2000);
+
+console.log("End of script");
+
+
+//------------------------------
+const makeBurger = () => {
+  const meatType = getMeat();
+  const bunsType = getBuns();
+  const burger = putMeatBetwenBuns(bunsType, meatType);
+  return burger;
+};
+function getMeat() {
+  console.log("walking to the butcher...");
+  setTimeout(() => {
+    console.log("getting the beef from the butcher");
+    return "beef"
+  }, 2000);
+}
+
+function getBuns() {
+  console.log("Waiting to execute function: ")
+  setTimeout(() => {
+    console.log("getting the buns from the bakery");
+    return "whole grain";
+  }, 1500);
+}
+
+
+function putMeatBetwenBuns(bunsType, meatType) {
+  console.log(`creating the ${meatType} burger with ${bunsType} buns`);
+  return "Delicious Burger"
+}
+
+const burger = makeBurger();
+console.log(burger);
+
+
+
+/*Promises*/
+let goodGrades = true; // Use descriptive variable names
+let endSemester = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    if (goodGrades) {
+      resolve("Congratulations! You earned a reward!"); // More professional message
+    } else {
+      reject("Unfortunately, grades did not meet expectations."); // More constructive message
+    }
+  }, 1500);
+});
+
+// Add promise handling
+endSemester
+  .then(message => console.log(message))
+  .catch(error => console.log(error));
+
+
+function compareToTen(num) {
+  return new Promise((resolve, reject) => {
+
+    if (num <= 10) {
+      resolve(`${num} is less or equal 10 `);
+    } else {
+      reject(`${num} is greater then 10 `);
+    }
+  });
+}
+compareToTen(35)
+  .then(result => console.log(result))
+  .catch(error => console.log(error))
+
+  compareToTen(8)
+  .then(result => console.log(result))
+  .catch(error => console.log(error))
+
+
+
+  /***************/
+const delayedPromise = new Promise((resolve)=>{
+  setTimeout(() => resolve("success!")  , 4000)
+})
+delayedPromise.then(result=>console.log(result));
+
+  /***************/
+const resolvedPromise = Promise.resolve(3);
+const rejectedPromise = Promise.reject("Boo!");
+
+resolvedPromise.then(value => console.log(value));
+rejectedPromise.catch(error => console.log(error));
+
+/* Fetch API Async Awiat*/
+
+const getArtwork = () => {
+  console.log("Function is working..")
+  fetch("https://api.artic.edu/api/v1/artworks/14572")
+  .then( (response) => {
+    if (response.ok){
+      return response.json()
+    }else{
+      throw new Error("There's an errore calling the API")
+    }  
+    })
+  .then((obj) => {
+    console.log(obj);
+    console.log(`The painting is named ${obj.data.title}
+                  by the artiste ${obj.data.artiste_title}`)
+  })
+  .catch(function(error){
+    console.log(`we got error: ${error}`)
+  });
+  console.log("work done..")
+
+}
+getArtwork()
+
+
