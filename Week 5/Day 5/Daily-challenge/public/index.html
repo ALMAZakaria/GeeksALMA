@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Guessing Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Emoji Guessing Game</h1>
+        
+        <div class="game-area">
+            <div class="player-info">
+                <input type="text" id="playerName" placeholder="Enter your name">
+                <button id="startGame">Start Game</button>
+            </div>
+
+            <div class="game-content" style="display: none;">
+                <div class="emoji-display">
+                    <span id="currentEmoji"></span>
+                </div>
+
+                <div class="options-container" id="optionsContainer">
+                    <!-- Options will be added here dynamically -->
+                </div>
+
+                <div class="feedback" id="feedback"></div>
+                
+                <div class="score-display">
+                    <h3>Your Score: <span id="playerScore">0</span></h3>
+                </div>
+            </div>
+
+            <div class="leaderboard">
+                <h2>Leaderboard</h2>
+                <ul id="leaderboardList">
+                    <!-- Leaderboard items will be added here dynamically -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html> 
