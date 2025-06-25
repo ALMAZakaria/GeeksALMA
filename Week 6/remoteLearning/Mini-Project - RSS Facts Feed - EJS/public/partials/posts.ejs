@@ -1,0 +1,16 @@
+<div>
+    <% if (posts && posts.length > 0) { %>
+        <% posts.forEach(item => { %>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="<%= item.link %>" target="_blank"><%= item.title %></a></h5>
+                    <p class="card-text"><small class="text-muted">Published on <%= new Date(item.pubDate).toLocaleDateString() %> by <%= item.creator %></small></p>
+                    <p class="card-text">Categories: <%= item.categories.join(', ') %></p>
+                    <div class="card-text"><%- item['content:encoded'] || item.content %></div>
+                </div>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No posts to display.</p>
+    <% } %>
+</div> 

@@ -1,6 +1,6 @@
 //📌 Phase 1: Core JavaScript (1–2 Weeks)
 
-`📌 Step 1: Variable Declarations (var, let, const)`
+`📌 Step 1: Variable Declarations (var, let, const)`
 /*
 ### **Definition & Explanation**
 - **`var`**: Function-scoped, hoisted, can be redeclared.
@@ -38,8 +38,8 @@ PI = 3.1416; // ❌ TypeError (no reassignment)
 
 `📌 Step 2: Data Types & Type Coercion`
 /*
-- **Primitive Types**: `number`, `string`, `boolean`, `null`, `undefined`, `symbol`, `bigint`.
-- **Type Coercion**: Automatic conversion between types (e.g., `1 + "2" = "12"`).
+- **Primitive Types**: `number`, `string`, `boolean`, `null`, `undefined`, `symbol`, `bigint`.
+- **Type Coercion**: Automatic conversion between types (e.g., `1 + "2" = "12"`).
 */
 /*Case Study*/
 console.log(5 + "5"); // "55" (number coerced to string)
@@ -50,9 +50,9 @@ console.log(null == undefined); // true (loose equality quirk)
 /*
 ### **Definition & Explanation**
 
-- **Function Declaration**: `function foo() {}` (hoisted).
-- **Function Expression**: `const foo = function() {}` (not hoisted).
-- **Arrow Function**: `const b       foo = () => {}` (lexical `this`).
+- **Function Declaration**: `function foo() {}` (hoisted).
+- **Function Expression**: `const foo = function() {}` (not hoisted).
+- **Arrow Function**: `const b       foo = () => {}` (lexical `this`).
 */
 /************Case Study*************/
 // Function Declaration (hoisted)
@@ -254,3 +254,64 @@ const getArtwork = () => {
 getArtwork()
 
 
+/*
+Write a JavaScript program that displays the colors in the following order :
+ "1# choice is Blue."
+ "2# choice is Green." 
+ "3# choice is Red." ect…
+*/
+const colors = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+/*
+colors.forEach((color, index)=> {
+  console.log(`${index+1}# choice is ${color}`);
+})
+
+
+
+Check if at least one element of the array is equal to the value "Violet". If yes, console.log("Yeah"), else console.log("No...")
+*/
+const colors1 = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+let found = false;
+for(let i =0; i<colors.length; i++){
+  if (colors[i] == 'Violet'){
+    found = true;
+    break;
+  }
+}
+if(found = true){
+  console.log("Yeah")
+}else{
+  console.log("no")
+}
+//Methode 2
+const colors2 = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+if(colors.includes("Violet")){
+  console.log("Yeah!")
+}else{
+  console.log("No")
+}
+
+
+/*
+Write a JavaScript program that displays the colors in the following order : “1st choice is Blue .” “2nd choice is Green.” “3rd choice is Red.” ect…
+Hint : Use the array methods taught in class and ternary operator.
+*/
+const colors3 = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+const ordinal = ["th","st","nd","rd"];
+
+colors3.forEach((color,index)=>{
+  const pos = index +1;
+  const suffix = (pos == 1) ? ordinal[1]:
+                 (pos == 2) ? ordinal[2]:
+                 (pos == 3) ? ordinal[3]: ordinal[0];
+  console.log(`${pos}${suffix} choice is ${color}.`)
+});
+
+
+const epic = ['a', 'long', 'time', 'ago', 'in a', 'galaxy', 'far far', 'away'];
+
+const combinedString = epic.reduce((accumulator, currentValue) => {
+  return accumulator + " " + currentValue;
+});
+
+console.log(combinedString);
