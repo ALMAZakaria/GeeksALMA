@@ -1,0 +1,81 @@
+1-POO
+
+2-Class (Contracture, les attributes, functionality) --> instance 
+
+	*Contracture -(__init__) (La porte à la class)
+	*Instance(Objects)
+
+	*instance
+	*Attributes
+	*Functionality (Méthode)
+
+
+	2-1 How to declare a class ?
+		- class Dog():
+			pass
+		- shelter_dog = Dog("Malinois")
+
+	2-2- How to create instance ?
+			**
+		- shelter_dog = Dog(name="Malinois")
+		#OR
+	
+
+3- Class with function
+
+class DOg():
+	def __init__(self, name_of_the_dog:	
+	    print("A new dog has been initialized !")
+	    print ("......", name of the dogs	)
+		self.name = name_of_the_god 
+
+	    def bark(self):
+
+	**self is like this in react when ever we see it it's about instance not class
+
+
+
+4-Setters and getters
+
+	*setter -- Attributes privées 		
+	*getters
+
+5- Class variables
+
+
+
+
+
+
+
+
+6-1 instance(object) variables 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

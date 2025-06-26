@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" >
+<head>
+  <meta charset="UTF-8" />
+  <title>Random Giphy by Category - Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center p-6">
+
+  <h1 class="text-3xl font-bold mb-6">Random Giphy Search by Category</h1>
+
+  <form id="gif-form" class="flex gap-3 mb-6 w-full max-w-xl">
+    <input
+      type="text"
+      id="category-input"
+      placeholder="Enter category (e.g. sun)"
+      required
+      class="flex-grow px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <button
+      type="submit"
+      class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+    >
+      Get Random Gif
+    </button>
+    <button
+      type="button"
+      id="delete-all-btn"
+      class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+    >
+      DELETE ALL
+    </button>
+  </form>
+
+  <div
+    id="gif-container"
+    class="flex flex-wrap gap-4 max-w-5xl justify-center"
+  ></div>
+
+  <script>
+    const form = document.getElementById("gif-form");
+    const input = document.getElementById("category-input");
+    const gifContainer = document.getElementById("gif-container");
+    const deleteAllBtn = document.getElementById("delete-all-btn");
+
+    const API_KEY = "hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My";
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const category = input.value.trim();
+      if (!category) return;
+
+      const url = `https://api.giphy.com/v1/gifs/random?tag=${encodeURIComponent(
+        category
+      )}&rating=g&api_key=${API_KEY}`;
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Failed to fetch GIF: " + response.status);
+        }
+        const data = await response.json();
+
+        const gifUrl = data.data.images.fixed_height.url;
+
+        // Create container for each gif + delete button
+        const gifBox = document.createElement("div");
+        gifBox.className =
+          "relative rounded overflow-hidden shadow-lg max-w-[250px]";
+
+        const img = document.createElement("img");
+        img.src = gifUrl;
+        img.alt = category;
+        img.className = "w-full h-auto block";
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "DELETE";
+        deleteBtn.className =
+          "absolute top-2 right-2 bg-red-600 hover:bg-red-700 text-white text-xs px-2 py-1 rounded shadow transition";
+        deleteBtn.onclick = () => gifBox.remove();
+
+        gifBox.appendChild(img);
+        gifBox.appendChild(deleteBtn);
+        gifContainer.appendChild(gifBox);
+
+        input.value = "";
+      } catch (error) {
+        console.error("Error fetching GIF:", error);
+      }
+    });
+
+    deleteAllBtn.addEventListener("click", () => {
+      gifContainer.innerHTML = "";
+    });
+  </script>
+</body>
+</html>

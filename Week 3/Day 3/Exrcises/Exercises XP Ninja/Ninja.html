@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Exercises</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #000;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="calendar"></div>
+
+    <script>
+        // Exercise 1: Random Number
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        console.log("Random number:", randomNumber);
+        for (let i = 0; i <= randomNumber; i++) {
+            if (i % 2 === 0) {
+                console.log(i);
+            }
+        }
+
+        // Exercise 2: Capitalized letters
+        function capitalize(str) {
+            let evenCaps = '';
+            let oddCaps = '';
+            for (let i = 0; i < str.length; i++) {
+                evenCaps += i % 2 === 0 ? str[i].toUpperCase() : str[i];
+                oddCaps += i % 2 !== 0 ? str[i].toUpperCase() : str[i];
+            }
+            return [evenCaps, oddCaps];
+        }
+
+        console.log(capitalize("abcdef")); // ['AbCdEf', 'aBcDeF']
+
+        // Exercise 3: Is palindrome?
+        function isPalindrome(str) {
+            const reversed = str.split('').reverse().join('');
+            return str === reversed;
+        }
+
+        console.log("Is 'madam' a palindrome?", isPalindrome("madam")); // true
+        console.log("Is 'hello' a palindrome?", isPalindrome("hello")); // false
+
+        // Exercise 4: Biggest Number
+        function biggestNumberInArray(arrayNumber) {
+            let max = 0;
+            for (let num of arrayNumber) {
+                if (typeof num === 'number' && num > max) {
+                    max = num;
+                }
+            }
+            return max;
+        }
+
+        console.log(biggestNumberInArray([-1, 0, 3, 100, 99, 2, 99])); // 100
+        console.log(biggestNumberInArray(['a', 3, 4, 2])); // 4
+        console.log(biggestNumberInArray([])); // 0
+
+        // Exercise 5: Unique Elements
+        function uniqueElements(arr) {
+            return [...new Set(arr)];
+        }
+
+        console.log(uniqueElements([1, 2, 3, 3, 3, 3, 4, 5])); // [1, 2, 3, 4, 5]
+
+        // Exercise 6: Calendar
+        function createCalendar(year, month) {
+            const calendarDiv = document.getElementById('calendar');
+            const date = new Date(year, month - 1, 1);
+            const table = document.createElement('table');
+
+            const days = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
+            const headerRow = document.createElement('tr');
+            days.forEach(day => {
+                const th = document.createElement('th');
+                th.textContent = day;
+                headerRow.appendChild(th);
+            });
+            table.appendChild(headerRow);
+
+            let firstDay = date.getDay(); // Sunday = 0, Saturday = 6
+            if (firstDay === 0) firstDay = 7; // Make Sunday = 7
+            let currentRow = document.createElement('tr');
+
+            // Fill empty cells before the 1st of the month
+            for (let i = 1; i < firstDay; i++) {
+                currentRow.appendChild(document.createElement('td'));
+            }
+
+            while (date.getMonth() === month - 1) {
+                const td = document.createElement('td');
+                td.textContent = date.getDate();
+                currentRow.appendChild(td);
+
+                if (date.getDay() === 0) { // Sunday, end of week
+                    table.appendChild(currentRow);
+                    currentRow = document.createElement('tr');
+                }
+
+                date.setDate(date.getDate() + 1);
+            }
+
+            // Add the final row if it wasn't added
+            if (currentRow.children.length > 0) {
+                table.appendChild(currentRow);
+            }
+
+            calendarDiv.appendChild(table);
+        }
+
+        createCalendar(2012, 9); // Example usage
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Challenge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-cover bg-center min-h-screen flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');">
+    <div class="bg-white bg-opacity-60 rounded-xl shadow-lg p-10 w-full max-w-md flex flex-col items-center">
+        <h1 class="text-4xl font-bold mb-6 text-center text-gray-800">Currency Converter</h1>
+        <form id="converter-form" class="w-full flex flex-col gap-4">
+            <div>
+                <label class="block text-lg font-semibold text-gray-700 mb-1">From:</label>
+                <select id="from-currency" class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"></select>
+            </div>
+            <div class="flex items-center justify-center gap-2">
+                <button id="switch-btn" type="button" class="p-2 rounded-full bg-blue-200 hover:bg-yellow-400 transition m-4">
+                    <img class="w-12 h-12 " src="https://res.cloudinary.com/docpscsgl/image/upload/v1749556712/148588337-233540b7-aac6-4b25-bbf4-520765380f59_awyncw.png" alt="">
+                </button>
+            </div>
+            <div>
+                <label class="block text-lg font-semibold text-gray-700 mb-1">To:</label>
+                <select id="to-currency" class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"></select>
+            </div>
+            <div>
+                <label class="block text-lg font-semibold text-gray-700 mb-1">Amount:</label>
+                <input id="amount" type="number" min="0" value="1" class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white font-bold py-2 rounded hover:bg-yellow-400 transition">Convert</button>
+        </form>
+        <div id="result" class="mt-6 text-2xl font-semibold text-gray-800"></div>
+    </div>
+    <script src="dailychallenge.js"></script>
+</body>
+</html> 

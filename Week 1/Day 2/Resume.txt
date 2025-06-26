@@ -1,0 +1,39 @@
+(06-05-2026) 
+
+Les objecte ne son pas étirable 
+
+1-Dictionnaire : 
+Dics = { 
+
+   "name": "zack",
+    "Age":"12",
+     "Weight":"70kg"}
+2-Fonction avec dictionnaire 
+
+3- Break, Continue, Pass
+Des 
+
+Pass (place holder utilisé piur dire au programme ignore)
+4-Function (useable bloc of code) 
+*Syntax 
+def name_of_function():
+       print(Hello"+username) 
+
+*Appel du function 
+We call the fuction by it name :
+name_of_function() 
+
+QUACS AXE
+6- Global and Local store of variable
+
+
+7- encapsule inclusion variables
+
+
+
+
+8-Args and kwargs 
+
+Args: arguments (auyomatic order of arguments) the key value 1,2,3... 
+
+Kwarges: wait for wait for a list name="Zack..",age="12".....
